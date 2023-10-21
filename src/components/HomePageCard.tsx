@@ -1,5 +1,3 @@
-import 'react'
-
 const HomePageCard = ({title, img, link}:any) => {
   return (
     <div className='h-[420px] bg-white z-30 m-3'>
@@ -9,5 +7,4 @@ const HomePageCard = ({title, img, link}:any) => {
     </div>
   )
 }
-
 export default HomePageCard

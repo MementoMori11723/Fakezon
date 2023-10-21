@@ -1,5 +1,3 @@
-import 'react'
-
 const SearchResults = () => {
   return (
     <div>
@@ -7,5 +5,4 @@ const SearchResults = () => {
     </div>
   )
 }
-
 export default SearchResults

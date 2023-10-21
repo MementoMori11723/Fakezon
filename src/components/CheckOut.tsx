@@ -1,11 +1,4 @@
-import 'react'
-
 const CheckOut = () => {
-  return (
-    <div>
-      CheckOut
-    </div>
-  )
+  return (<div>CheckOut</div>)
 }
-
 export default CheckOut

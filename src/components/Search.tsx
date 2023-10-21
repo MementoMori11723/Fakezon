@@ -1,4 +1,3 @@
-import 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 const Search = () => {
   return (
@@ -11,5 +10,4 @@ const Search = () => {
     </div>
   )
 }
-
 export default Search
