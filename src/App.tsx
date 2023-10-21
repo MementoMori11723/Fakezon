@@ -1,14 +1,20 @@
 import 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { HomePage } from './components'
+import { HomePage, NavBar, CheckOut, SearchResults, ProductPage } from './components'
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={ <HomePage/> }/>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <NavBar/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={ <HomePage/> }/>
+          <Route path='/search' element={ <SearchResults/> }/>
+          <Route path='/checkout' element={ <CheckOut/> }/>
+          <Route path='/product/:id' element={ <ProductPage/> }/>
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
