@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { CallAPI } from "../utils/CallApi";
+
 const SearchResults = () => {
-  const [searchParams] = useSearchParams();
-  const [products, setProducts] = useState<any>();
+  const searchParams = new URLSearchParams(window.location.search);
+  const [products, setProducts] = useState<any>([]);
   const getSearchResults = () => {
     const searchTerm = searchParams.get("searchTerm");
     const category = searchParams.get("category");
     CallAPI(`data/search.json`).then((sr) => {
-      const cr = sr[category || ""];
+      const cr = sr[category || "All"];
       if (searchTerm) {
-        const result = cr.filter(
-          products.title.toLowerCase().includes(searchTerm.toLowerCase())
+        const results = cr.filter((p: any) =>
+          p.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
-        setProducts(result);
+        setProducts(results);
       } else {
         setProducts(cr);
       }
@@ -24,7 +24,7 @@ const SearchResults = () => {
     <div className="min-w-[1200px] max-w-[1300px] m-auto">
       {products &&
         products.map((p: any, k: any) => {
-          <div key={k}>{p.title}</div>;
+          return <div key={k}>{p.title}</div>;
         })}
     </div>
   );
