@@ -1,13 +1,23 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { CallAPI } from "../utils/CallApi";
-import { useNavigate, createSearchParams } from "react-router-dom";
+import {
+  useNavigate,
+  createSearchParams,
+  BrowserRouter,
+} from "react-router-dom";
 
 const Search = () => {
-  const [suggestions, setSuggestions] = useState<any>(null);
+  const [suggestions, setSuggestions] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("All");
   const navigate = useNavigate();
+  console.log(suggestions + " " + category);
+  const getSuggestions = () => {
+    CallAPI(`data/suggestions.json`).then((sr) => {
+      setSuggestions(sr);
+    });
+  };
   const onHandleSubmit = (e: any) => {
     e.preventDefault();
     navigate({
@@ -19,11 +29,6 @@ const Search = () => {
     });
     setSearchTerm("");
     setCategory("All");
-  };
-  const getSuggestions = () => {
-    CallAPI(`data/suggestions.json`).then((sr) => {
-      setSuggestions(sr);
-    });
   };
   useEffect(() => getSuggestions(), []);
   return (
@@ -42,7 +47,7 @@ const Search = () => {
           <option>Mobiles</option>
         </select>
         <input
-          className="flex grow items-center h-[100%] text-black"
+          className="flex grow items-center h-[100%] text-black p-2"
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -54,17 +59,13 @@ const Search = () => {
       {suggestions && (
         <div className="bg-white text-black w-full z-40 absolute">
           {suggestions
-            .filter((s: any) => {
-              const currentSearchTerm = searchTerm.toLowerCase();
+            .filter((s) => {
+              const cst = searchTerm.toLowerCase();
               const title = s.title.toLowerCase();
-              return (
-                currentSearchTerm &&
-                title.startsWith(currentSearchTerm) &&
-                title !== currentSearchTerm
-              );
+              return cst && title.startsWith(cst) && title !== cst;
             })
             .slice(0, 10)
-            .map((s: any) => (
+            .map((s) => (
               <div key={s.id} onClick={() => setSearchTerm(s.title)}>
                 {s.title}
               </div>
