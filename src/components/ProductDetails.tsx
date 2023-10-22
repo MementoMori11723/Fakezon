@@ -1,6 +1,5 @@
 import { ProductBadge, ProductRating } from "./";
 const ProductDetails = ({ p, r }: any) => {
-  console.log(r);
   return (
     <div className="mb-1">
       <div className="text-xl xl:text-2xl font-medium mb-1">{p.title}</div>

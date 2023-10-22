@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -25,15 +26,15 @@ const CarouselCategory = () => {
       <div className="text-2xl font-semibold p-3">Shop By Category</div>
       <Swiper
         slidesPerView={5}
-        spaceBetween={10}
+        spaceBetween={2}
         navigation={true}
         modules={[Navigation]}
       >
         {Array.from({ length: 6 }, (_, i) => (
           <SwiperSlide key={i}>
-            <a href={`/search?category=${getCategory(i)}`}>
-              <img src={`../images/category_${i}.jpg`} alt="" />
-            </a>
+            <Link to={`/search?category=${getCategory(i)}`}>
+              <img className="p-3" src={`../images/category_${i}.jpg`} alt="" />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

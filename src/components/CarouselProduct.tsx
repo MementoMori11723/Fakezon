@@ -10,14 +10,14 @@ const CarouselProduct = () => {
       <div className="text-2xl font-semibold p-3">Best Sellers</div>
       <Swiper
         slidesPerView={7}
-        spaceBetween={10}
+        spaceBetween={3}
         navigation={true}
         modules={[Navigation]}
       >
         {Array.from({ length: 9 }, (_, i) => (
           <SwiperSlide key={i}>
             <Link to={`/product/${i}`}>
-              <img src={`../images/product_${i}_small.jpg`} />
+              <img className="p-5" src={`../images/product_${i}_small.jpg`} />
             </Link>
           </SwiperSlide>
         ))}

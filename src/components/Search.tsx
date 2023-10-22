@@ -1,6 +1,7 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { CallAPI } from "../utils/CallApi";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   const [suggestions, setSuggestions] = useState<any[]>([]);
@@ -33,12 +34,12 @@ const Search = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <a
-          href={`/search?category=${category}&searchTerm=${searchTerm}`}
+        <Link
+          to={`/search?category=${category}&searchTerm=${searchTerm}`}
           className="w-[45px]"
         >
           <MagnifyingGlassIcon className="h-[22px] m-auto stroke-slate-900" />
-        </a>
+        </Link>
       </div>
       {suggestions && (
         <div className="bg-white text-black w-full z-40 absolute">

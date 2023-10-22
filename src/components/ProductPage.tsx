@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { CallAPI } from "../utils/CallApi";
 import { ProductDetails } from "./";
 import { GB_CURRENCY } from "../utils/constants";
+import { addToCart } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ProductPage = () => {
   const { id }: any = useParams();
   const [product, setProduct] = useState<any>([]);
+  const dispach = useDispatch();
+  const [quantity, setQuantity] = useState("1");
+  const addQuantityToProduct = () => {
+    setProduct((product.quantity = quantity));
+    return product;
+  };
   const getProduct = () => {
     CallAPI(`data/products.json`).then((pr) => {
       setProduct(pr[id]);
@@ -18,7 +26,7 @@ const ProductPage = () => {
     product && (
       <div className="h-screen bg-fakezon-background">
         <div className="min-w-[1000px] max-w-[1500px] m-auto p-4">
-          <div className="grid grid-cols-10">
+          <div className="grid grid-cols-10 gap-2">
             <div className="col-span-3 p-8 bg-white rounded m-auto">
               <img src={product.image} />
             </div>
@@ -48,15 +56,23 @@ const ProductPage = () => {
               </div>
               <div className="text-base xl:text-lg mt-1">
                 Quantity:{" "}
-                <select className="p-2 bg-white border rounded-md focus:border-indigo-600">
+                <select
+                  onChange={(e) => setQuantity(e.target.value)}
+                  className="p-2 bg-white border rounded-md focus:border-indigo-600"
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
                 </select>
               </div>
-              <button className="bg-yellow-400 p-3 text-xs xl:text-sm rounded hover:bg-yellow-500 mt-3">
-                Add to Cart
-              </button>
+              <Link to={"/checkout"}>
+                <button
+                  onClick={() => dispach(addToCart(addQuantityToProduct()))}
+                  className="btn"
+                >
+                  Add to Cart
+                </button>
+              </Link>
             </div>
           </div>
         </div>
