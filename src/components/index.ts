@@ -11,3 +11,7 @@ export { default as ProductPage } from "./ProductPage";
 export { default as ProductDetails } from "./ProductDetails";
 export { default as ProductBadge } from "./ProductBadge";
 export { default as ProductRating } from "./ProductRating";
+export { default as PageNotFound } from "./PageNotFound";
+export { default as AllowNavBar } from "./AllowNavBar";
+export { default as FooterBar } from "./FooterBar";
+export { default as AllowFooterBar } from "./AllowFooterBar";

@@ -6,18 +6,28 @@ import {
   CheckOut,
   SearchResults,
   ProductPage,
+  PageNotFound,
+  AllowNavBar,
+  FooterBar,
+  AllowFooterBar,
 } from "./components";
 function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar />
+        <AllowNavBar>
+          <NavBar />
+        </AllowNavBar>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <AllowFooterBar>
+          <FooterBar />
+        </AllowFooterBar>
       </BrowserRouter>
     </>
   );

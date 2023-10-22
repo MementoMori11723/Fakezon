@@ -2,10 +2,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { ProductDetails } from "./";
 import { GB_CURRENCY } from "../utils/constants";
-import { removeFromCart } from "../redux/cartSlice";
+import {
+  removeFromCart,
+  clearCart,
+  addToCart,
+  cutFromCart,
+} from "../redux/cartSlice";
 
 const CheckOut = () => {
   const products = useSelector((state: any) => state.cart.products);
+  let copy = products.concat();
   const itemCount = useSelector((state: any) => state.cart.productsNumber);
   const dispach = useDispatch();
   const subtotal = useSelector((state: any) =>
@@ -42,15 +48,38 @@ const CheckOut = () => {
                         {GB_CURRENCY.format(p.price)}
                       </div>
                       <div className="grid grid-cols-3 w-20 text-center mt-2 bg-slate-200">
-                        <div className="text-xl xl:text-2xl bg-gray-400 rounded">
+                        <div
+                          onClick={() => {
+                            if (p.quantity > 1) {
+                              console.log("clicked!");
+                              copy[p.id - 1] = {
+                                ...copy[p.id - 1],
+                                quantity: 1,
+                              };
+                              dispach(cutFromCart(copy[p.id - 1]));
+                            } else {
+                              console.log("Not clicked!");
+                            }
+                          }}
+                          className="text-xl xl:text-2xl bg-gray-400 rounded"
+                        >
                           -
                         </div>
                         <div className="text-lg xl:text-xl m-auto ">
                           {p.quantity}
                         </div>
-                        <div className="text-xl xl:text-2xl bg-gray-400 rounded">
+                        <button
+                          onClick={() => {
+                            copy[p.id - 1] = {
+                              ...copy[p.id - 1],
+                              quantity: 1,
+                            };
+                            dispach(addToCart(copy[p.id - 1]));
+                          }}
+                          className="text-xl xl:text-2xl bg-gray-400 rounded"
+                        >
                           +
-                        </div>
+                        </button>
                       </div>
                       <div>
                         <button
@@ -83,7 +112,11 @@ const CheckOut = () => {
                 {GB_CURRENCY.format(subtotal)}
               </span>
             </div>
-            <Link to="/" className="btn m-auto">
+            <Link
+              to="/"
+              onClick={() => dispach(clearCart())}
+              className="btn m-auto"
+            >
               Proceed to CheckOut
             </Link>
           </div>

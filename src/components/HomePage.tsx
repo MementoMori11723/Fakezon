@@ -61,7 +61,6 @@ const HomePage = () => {
             src={"./images/banner_image.jpg"}
           />
         </div>
-        <div className="text-center">hello</div>
       </div>
     </div>
   );

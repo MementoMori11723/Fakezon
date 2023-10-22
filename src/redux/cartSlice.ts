@@ -23,7 +23,6 @@ export const cartSlice = createSlice({
         });
       }
       state.productsNumber += parseInt(action.payload.quantity);
-      console.log(JSON.parse(JSON.stringify(state.products)));
     },
     removeFromCart: (state, action) => {
       const removeProduct = state.products.find(
@@ -35,8 +34,26 @@ export const cartSlice = createSlice({
       state.productsNumber -= removeProduct.quantity;
       state.products.splice(index, 1);
     },
+    clearCart: (state) => {
+      state.productsNumber = 0;
+      state.products = [];
+    },
+    cutFromCart: (state, action) => {
+      const cutProductExists: any = state.products.find(
+        (p: any) => p.id === action.payload.id
+      );
+      if (cutProductExists) {
+        cutProductExists.quantity -= parseInt(action.payload.quantity);
+      } else {
+        state.products.push({
+          ...action.payload,
+          quantity: parseInt(action.payload.quantity),
+        });
+      }
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, cutFromCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

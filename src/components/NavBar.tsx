@@ -44,7 +44,7 @@ const NavBar = () => {
             <div className="pr-3 pl-3 flex hover:border-gray-200 border-transparent border">
               <ShoppingCartIcon className="h-[38px] mt-2" />
               <div className="relative m-1">
-                <div className="absolute right-[9px] font-bold m-2 text-orange-400">
+                <div className="absolute right-[9px] text-sm font-semibold m-2 pt-[2px] text-orange-400">
                   {cart}
                 </div>
               </div>

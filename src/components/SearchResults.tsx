@@ -28,21 +28,27 @@ const SearchResults = () => {
       {products &&
         products.map((p: any, k: any) => {
           return (
-            <Link key={k} className="m-1" to={`/product/${p.id}`}>
-              <div className="h-[250px] grid grid-cols-12 rounded mt-4 mb-1">
-                <div className="col-span-2 p-4 bg-gray-400">
-                  <img className="h-[100%] m-auto" src={p.image_small} />
-                </div>
-                <div className="col-span-10 p-12 bg-gray-100 border border-gray-200 hover:bg-gray-200">
-                  <div className="font-medium text-black p-2">
-                    <ProductDetails p={p} r={true} />
-                    <div className="text-xl xl:text-2xl pt-1">
-                      {GB_CURRENCY.format(p.price)}
+            <>
+              <Link key={k} className="m-3" to={`/product/${p.id}`}>
+                <div className="h-[250px] grid grid-cols-12 rounded m-5 p-5">
+                  <div className="col-span-2 p-4 bg-gray-300/50">
+                    <img
+                      className="h-[100%] m-auto border-fakezon-background border"
+                      src={p.image_small}
+                    />
+                  </div>
+                  <div className="col-span-10 p-12 bg-gray-100 border border-gray-200 hover:bg-gray-200">
+                    <div className="font-medium text-black p-2">
+                      <ProductDetails p={p} r={true} />
+                      <div className="text-xl xl:text-2xl pt-1">
+                        {GB_CURRENCY.format(p.price)}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+              <div className="text-white mb-1">hello</div>
+            </>
           );
         })}
     </div>
