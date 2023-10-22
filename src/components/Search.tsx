@@ -21,7 +21,7 @@ const Search = () => {
         >
           <option>All</option>
           <option>Deals</option>
-          <option>Fakezon</option>
+          <option>Amazon</option>
           <option>Fashion</option>
           <option>Computers</option>
           <option>Home</option>
