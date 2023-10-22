@@ -15,7 +15,7 @@ Fakezon is a clone of the Amazon website built using React.js. It mimics the bas
 
 ## Demo
 
-The project is hosted on Netlify. You can visit the live site at [https://fakezon.netlify.app](https://fakezon.netlify.app).
+The project is hosted on Netlify. You can visit the live site at [https://fakezon.netlify.app](https://fakezon.netlify.app/).
 
 ## Installation
 
