@@ -1,9 +1,10 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
-import { CallAPI } from "../utils/CallApi";
+import { CallAPI } from "../../utils/CallApi";
 import { Link } from "react-router-dom";
 
 const Search = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("All");

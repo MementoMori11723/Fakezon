@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { CallAPI } from "../utils/CallApi";
-import { NavBar, ProductDetails, FooterBar } from "./";
-import { GB_CURRENCY } from "../utils/constants";
-import { addToCart } from "../redux/cartSlice";
+import { CallAPI } from "../../utils/CallApi";
+import { NavBar, ProductDetails, FooterBar } from "..";
+import { GB_CURRENCY } from "../../utils/constants";
+import { addToCart } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 
 const ProductPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { id }: any = useParams();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [product, setProduct] = useState<any>([]);
   const dispach = useDispatch();
   const [quantity, setQuantity] = useState("1");
@@ -20,6 +22,7 @@ const ProductPage = () => {
       setProduct(pr[id]);
     });
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => getProduct(), []);
   if (!product?.title) return <h1>Loading Product ...</h1>;
   return (

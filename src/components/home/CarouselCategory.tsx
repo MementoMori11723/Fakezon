@@ -5,7 +5,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const CarouselCategory = () => {
-  const getCategory = (i: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getCategory = (i:any) => {
     switch (i) {
       case 0:
         return "Deals";

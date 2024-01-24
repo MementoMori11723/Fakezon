@@ -1,20 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { ProductDetails } from "./";
-import { GB_CURRENCY } from "../utils/constants";
+import { ProductDetails } from "..";
+import { GB_CURRENCY } from "../../utils/constants";
 import {
   removeFromCart,
   clearCart,
   addToCart,
   cutFromCart,
-} from "../redux/cartSlice";
+} from "../../redux/cartSlice";
 
 const CheckOut = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const products = useSelector((state: any) => state.cart.products);
+  // eslint-disable-next-line prefer-const
   let copy = products.concat();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const itemCount = useSelector((state: any) => state.cart.productsNumber);
   const dispach = useDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const subtotal = useSelector((state: any) =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     state.cart.products.reduce((s: any, p: any) => s + p.price * p.quantity, 0)
   );
   return (
@@ -25,6 +30,7 @@ const CheckOut = () => {
             <div className="text-2xl xl:text-3xl m-4 p-2 font-bold">
               Shopping Cart
             </div>
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {products.map((p: any) => {
               return (
                 <div key={p.id}>

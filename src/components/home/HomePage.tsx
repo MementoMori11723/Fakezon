@@ -1,4 +1,4 @@
-import { Carousel, HomePageCard, CarouselCategory, CarouselProduct } from "./";
+import { Carousel, HomePageCard, CarouselCategory, CarouselProduct } from "..";
 const HomePage = () => {
   return (
     <div className="bg-fakezon-background">

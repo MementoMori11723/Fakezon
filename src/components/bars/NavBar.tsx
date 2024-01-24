@@ -1,9 +1,10 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { Search } from "./";
+import { Search } from "..";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const cart = useSelector((state: any) => state.cart.productsNumber);
   return (
     <header className="min-w-[1000px]">

@@ -1,4 +1,5 @@
-import { ProductBadge, ProductRating } from "./";
+import { ProductBadge, ProductRating } from "..";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProductDetails = ({ p, r }: any) => {
   return (
     <div className="mb-1">

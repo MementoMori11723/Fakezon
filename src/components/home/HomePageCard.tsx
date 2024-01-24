@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const HomePageCard = ({ title, img, link }: any) => {
   return (
     <Link to={`/search?category=All`}>

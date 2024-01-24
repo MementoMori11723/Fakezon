@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { CallAPI } from "../utils/CallApi";
+import { CallAPI } from "../../utils/CallApi";
 import { Link } from "react-router-dom";
-import { ProductDetails } from "./";
-import { GB_CURRENCY } from "../utils/constants";
+import { ProductDetails } from "..";
+import { GB_CURRENCY } from "../../utils/constants";
 
 const SearchResults = () => {
   const searchParams = new URLSearchParams(window.location.search);
