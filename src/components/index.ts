@@ -9,7 +9,6 @@ export { default as SearchResults } from "./search/SearchResults";
 export { default as CheckOut } from "./checkout/CheckOut";
 export { default as ProductPage } from "./products/ProductPage";
 export { default as ProductDetails } from "./products/ProductDetails";
-export { default as ProductBadge } from "./products/ProductBadge";
 export { default as ProductRating } from "./products/ProductRating";
 export { default as PageNotFound } from "./404/PageNotFound";
 export { default as AllowNavBar } from "./bars/AllowNavBar";

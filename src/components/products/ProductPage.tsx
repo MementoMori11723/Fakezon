@@ -22,6 +22,7 @@ const ProductPage = () => {
       setProduct(pr[id]);
     });
   };
+  const limit = product.price > product.oldPrice ? product.price - product.oldPrice : product.oldPrice - product.price
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => getProduct(), []);
   if (!product?.title) return <h1>Loading Product ...</h1>;
@@ -45,10 +46,10 @@ const ProductPage = () => {
               </div>
               <div className="col-span-2 p-4 rounded bg-white">
                 <div className="text-xl text-right xl:text-2xl font-semibold">
-                  Price: {GB_CURRENCY.format(product.price)}
+                  Price: {GB_CURRENCY.format((product.price * (product.oldPrice - product.price)))}
                 </div>
                 <div className="text-base xl:text-lg text-red-500 line-through text-right font-semibold">
-                  Old price: {GB_CURRENCY.format(product.oldPrice)}
+                  Old price: {GB_CURRENCY.format((product.oldPrice * (product.oldPrice - product.price)))}
                 </div>
                 <div className="text-sm text-blue-400 mt-3 xl:text-base">
                   Free Returns
@@ -65,9 +66,9 @@ const ProductPage = () => {
                     onChange={(e) => setQuantity(e.target.value)}
                     className="p-2 bg-white border rounded-md focus:border-indigo-600"
                   >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    {Array.from({length: limit},(_,i) => (
+                      <option>{i}</option>
+                    ))}
                   </select>
                 </div>
                 <Link to={"/checkout"}>

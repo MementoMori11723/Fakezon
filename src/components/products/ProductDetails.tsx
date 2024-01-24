@@ -1,4 +1,4 @@
-import { ProductBadge, ProductRating } from "..";
+import { ProductRating } from "..";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProductDetails = ({ p, r }: any) => {
   return (
@@ -13,9 +13,6 @@ const ProductDetails = ({ p, r }: any) => {
         </div>
       )}
       <div className="text-xs xl:text-sm font-bold mb-1">{p.attribute}</div>
-      <div>
-        <ProductBadge badge={p.badge} />
-      </div>
     </div>
   );
 };

@@ -5,7 +5,9 @@ const FooterBar = () => {
     <div>
       <footer className="mt-[15px] text-white bg-fakezon-background">
         <div className="bg-[#37475a] h-[50px] flex  justify-center items-center text-[0.75rem]">
-          Go Back to Top
+          <a href="/">
+            Go Back to Top
+          </a>
         </div>
 
         <div className="bg-[#222] h-[300px] flex justify-evenly">

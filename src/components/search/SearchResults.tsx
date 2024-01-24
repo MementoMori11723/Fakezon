@@ -41,7 +41,7 @@ const SearchResults = () => {
                     <div className="font-medium text-black p-2">
                       <ProductDetails p={p} r={true} />
                       <div className="text-xl xl:text-2xl pt-1">
-                        {GB_CURRENCY.format(p.price)}
+                        {GB_CURRENCY.format((p.price * (p.oldPrice - p.price)))}
                       </div>
                     </div>
                   </div>
