@@ -20,7 +20,7 @@ const CheckOut = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const subtotal = useSelector((state: any) =>
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    state.cart.products.reduce((s: any, p: any) => s + p.price * p.quantity, 0)
+    state.cart.products.reduce((s: any, p: any) => s + (p.price * (p.oldPrice - p.price)) * p.quantity, 0)
   );
   return (
     <div className="h-screen bg-fakezon-background">
@@ -51,7 +51,7 @@ const CheckOut = () => {
                     </div>
                     <div className="col-span-2">
                       <div className="text-2xl xl:text-3xl mt-2 mr-4 font-semibold">
-                        {GB_CURRENCY.format(p.price)}
+                        {GB_CURRENCY.format((p.price * (p.oldPrice - p.price)))}
                       </div>
                       <div className="grid grid-cols-3 w-20 text-center mt-2 bg-slate-200">
                         <div

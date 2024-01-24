@@ -8,6 +8,7 @@ const config = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CallAPI = async (resource: any) => {
   const { data } = await axios.get(`${BASE_URL}/${resource}`, config);
   return data;
